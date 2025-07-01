@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // Insert your connection string inside this variable
-const connectionString = 'mongodb+srv://guimeyer64:ltGcDQzb95gqs7bD@cluster0.p63mzk5.mongodb.net/tickethack';
+const connectionString = process.env.CONNECTION_STRING;
 
 mongoose.set("strictQuery", true); // Remove Mongoose warning in console
 

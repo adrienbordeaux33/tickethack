@@ -11,14 +11,15 @@ router.get('/trips', function(req, res, next) {
 });
 
 
-// creer un cart a verif
+// creer un cart
 router.post('/carts', function(req, res, next) {
-  const newCart = new Cart
-  trips = req.body.tripsId
-  newCart.save().then(data => {res.json({result: true, data})});
+  const newCart = new Cart({
+     trip : req.body.tripsId
+  })
+  newCart.save().then(data => {res.json({result: true})});
 });
 
-// fonctionne pas 
+// recupp a mettre dans le font
 router.get('/carts', function(req, res, next) {
   Cart.find().populate('trip')
     .then(data => {

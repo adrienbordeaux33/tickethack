@@ -8,10 +8,12 @@ body{
 
 a{
     text-decoration: none;
+    color:black
 }
 a:visited
 {
     color: black;
+    
 }
 header{
     display: flex;
@@ -29,8 +31,11 @@ header{
     color: #469E86;
     font-weight: bold;
 }
+#logo a{
+    color: #469E86; 
+}
 #logo a:visited{
-        color: #469E86;
+    color: #469E86;
 }
 .link{
     width: 10%;

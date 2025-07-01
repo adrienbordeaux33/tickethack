@@ -1,0 +1,33 @@
+body{
+    margin: 0;
+    height: 100vh;
+}
+a{
+    text-decoration: none;
+}
+a:visited
+{
+    color: black;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8%;
+    width: 100%;
+}
+#logo{
+    margin-left: 3%;
+    font-size: 24px;
+    color: #469E86;
+    font-weight: bold;
+}
+#logo a:visited{
+        color: #469E86;
+}
+.link{
+    width: 10%;
+    display: flex;
+    gap: 10%;
+    color: black;
+}

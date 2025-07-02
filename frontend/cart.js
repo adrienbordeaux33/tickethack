@@ -2,7 +2,7 @@ const cartContainer = document.querySelector('#cart-container')
 fetch('http://localhost:3000/carts')
 .then(response =>response.json())
 .then(data=>{
-
+    console.log(data)
     const trajetsHTML = data.data.map((item) => {
     const hour = moment(item.trip.date).format('HH:mm')
         
@@ -11,15 +11,12 @@ fetch('http://localhost:3000/carts')
         <div>${item.trip.departure} > ${item.trip.arrival}</div>
         <div>${hour}</div>
         <div>${item.trip.price} €</div>
-        <input class="btn-delete-cart" type="button" value="X" data-index="${item.trip._id}">
+        <input class="btn-delete-cart" type="button" value="X" id="${item._id}">
     </div>
     `}).join("");
 
 
-array = [];
-for (let i = 0; i < data.data.length; i++) {
-    array.push(data.data[i].trip.price)
-}
+
 const montantTotal = data.data.reduce((t, i) => t + Number(i.trip.price), 0);
 
 
@@ -78,7 +75,25 @@ const montantTotal = data.data.reduce((t, i) => t + Number(i.trip.price), 0);
         })
     })
 
+    // encour
+
+
+    deleteCart()
 
 });
 
 
+function deleteCart(){
+	for (let i = 0; i < document.querySelectorAll('.btn-delete-cart').length; i++) {
+		document.querySelectorAll('.btn-delete-cart')[i].addEventListener('click', function () {
+            console.log(this.id);
+			fetch(`http://localhost:3000/carts/${this.id}`, { method: 'DELETE' })
+				.then(response => response.json())
+				.then(data => {
+					if (data.result) {
+						this.parentNode.remove();
+					}
+				});
+		});
+	}
+}

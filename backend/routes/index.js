@@ -13,6 +13,7 @@ router.get('/trips', function(req, res) {
 
 
 router.post('/carts', function(req, res) {
+  console.log(req.body.tripsId)
   const newCart = new Cart({
      trip : req.body.tripsId
   })
@@ -31,6 +32,15 @@ router.get('/carts', function(req, res) {
 router.delete('/carts', function(req,res){
   Cart.deleteMany({}).then(()=>res.json({result: true}))
 })
+
+// Delete un cart
+router.delete('/carts/:id', function(req, res) {
+  const id = req.params.id;
+  Cart.findByIdAndDelete(id)
+    .then(() => res.json({ result: true }))
+    .catch(err => res.status(500).json({ result: false, error: err.message }));
+});
+
 
 // Creer un booking
 router.post('/bookings', function(req,res){

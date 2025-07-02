@@ -1,9 +1,10 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-require('../models/connection');
-const Trip = require('../models/trips');
-const Cart = require('../models/carts');
-const Booking = require('../models/bookings');
+
+require("../models/connection");
+const Trip = require("../models/trips");
+const Cart = require("../models/carts");
+const Booking = require("../models/bookings");
 
 // Get all trips
 router.get('/trips', function(req, res) {
@@ -11,11 +12,10 @@ router.get('/trips', function(req, res) {
 });
 
 
-
 router.post('/carts', function(req, res) {
-  console.log(req.body.tripsId)
+  console.log(req.body)
   const newCart = new Cart({
-     trip : req.body.tripsId
+    trip : req.body.tripsId
   })
   newCart.save().then(data => {res.json({result: true})});
 });
@@ -25,7 +25,7 @@ router.get('/carts', function(req, res) {
   Cart.find().populate('trip')
     .then(data => {
       res.json({ result: true, data });
-    })
+    });
 });
 
 // Delete all carts

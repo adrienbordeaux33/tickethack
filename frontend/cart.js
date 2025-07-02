@@ -86,7 +86,6 @@ const montantTotal = data.data.reduce((t, i) => t + Number(i.trip.price), 0);
 function deleteCart(){
 	for (let i = 0; i < document.querySelectorAll('.btn-delete-cart').length; i++) {
 		document.querySelectorAll('.btn-delete-cart')[i].addEventListener('click', function () {
-            console.log(this.id);
 			fetch(`http://localhost:3000/carts/${this.id}`, { method: 'DELETE' })
 				.then(response => response.json())
 				.then(data => {

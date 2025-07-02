@@ -4,7 +4,6 @@ const cartContainer = document.querySelector('#cart-container')
 fetch('http://localhost:3000/bookings')
 .then(response=>response.json())
 .then(data=>{
-    console.log(data)
 
 
     let affiche = false;
@@ -12,14 +11,19 @@ fetch('http://localhost:3000/bookings')
         affiche=true;
     }
 
-    const trajetsHTML = data.data.map((item) => `
-    <div class="un-trajet">
+
+const trajetsHTML = data.data.map((item) => {
+    const hour= moment(item.trip.date).format('HH:mm')
+    const dateText = moment(item.trip.departure).endOf('day').fromNow();
+    return `
+        <div class="un-trajet">
         <div>${item.trip.departure} > ${item.trip.arrival}</div>
-        <div>${item.trip.date}</div>
+        <div>${hour}</div>
         <div>${item.trip.price} €</div>
-        <div>Departure in 5 hours</div>
-    </div>
-    `).join("");
+        <div>Departure ${dateText}</div>
+        </div>
+    `;
+}).join("");
 
     if(affiche){
         cartContainer.innerHTML =

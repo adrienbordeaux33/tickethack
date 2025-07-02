@@ -3,14 +3,17 @@ fetch('http://localhost:3000/carts')
 .then(response =>response.json())
 .then(data=>{
 
-    const trajetsHTML = data.data.map((item) => `
+    const trajetsHTML = data.data.map((item) => {
+    const hour = moment(item.trip.date).format('HH:mm')
+        
+    return `
     <div class="un-trajet">
         <div>${item.trip.departure} > ${item.trip.arrival}</div>
-        <div>${item.trip.date}</div>
+        <div>${hour}</div>
         <div>${item.trip.price} €</div>
         <input class="btn-delete-cart" type="button" value="X" data-index="${item.trip._id}">
     </div>
-    `).join("");
+    `}).join("");
 
 
 array = [];
@@ -22,7 +25,7 @@ const montantTotal = data.data.reduce((t, i) => t + Number(i.trip.price), 0);
 
     let affiche = false;
     if(data.result===true && data.data[0]){
-        affiche=true; // permet d'afficher le pannier et false affiche les phrases
+        affiche=true;
     }
 
 

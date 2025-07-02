@@ -51,6 +51,13 @@ router.post('/bookings', function(req,res){
       res.status(500).json({ result: false, error: 'Server error' });
     });
 })
+// recuperer bookings
+router.get('/bookings', function(req,res){
+  Booking.find().populate('trip')
+      .then(data => {
+      res.json({ result: true, data });
+    })
+})
 
 
 

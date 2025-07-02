@@ -240,3 +240,22 @@ font-size: 18px;
   border-radius: 3px;
   padding: 1vh;
 }
+
+#bookingList{
+  margin: auto;
+  width: 63%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+#bookingList p{
+padding-bottom: 3vh;
+  margin: auto;
+}
+
+#hrBookings{
+  margin: auto;
+  width: 25vh;
+  height: 2px;
+  margin-bottom: 3vh;
+}

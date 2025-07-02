@@ -21,7 +21,7 @@ const montantTotal = data.data.reduce((t, i) => t + Number(i.trip.price), 0);
 
 
     let affiche = false;
-    if(data.result===true){
+    if(data.result===true && data.data[0]){
         affiche=true; // permet d'afficher le pannier et false affiche les phrases
     }
 

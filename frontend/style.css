@@ -183,6 +183,7 @@ height: auto;
 
 #trajer-container{
   display: flex;
+
 }
 
 #pcart{
@@ -193,14 +194,17 @@ font-size: 18px;
 }
 
 .un-trajet{
-    font-size: 18px;
+  font-size: 18px;
   margin-bottom: 3vh;
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
+  width: 86%;
   padding: 10px 0 10px 0;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding-left: 2%;
+  padding-right: 2%;
+  margin-left:5%;
   background-color: #F5EEEE;
 }
 
